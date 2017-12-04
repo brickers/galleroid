@@ -1,6 +1,9 @@
 body {
     background-color: lightcoral;
 }
+
+ol.message_list { position: relative }
+
 .galleroid {
 	display: flex;
 	align-items: center;
@@ -14,17 +17,33 @@ body {
     box-sizing: border-box;
 }
 
+.galleroid-item,
+.galleroid-picture-container,
+.galleroid-title {
+    transition: all 0.2s ease-in;
+}
+
+.galleroid-item.active,
+.galleroid-picture-container.active,
+.galleroid-title.active {
+    transition: all 0.25s ease-out;
+}
+
 .galleroid-item {
     background-color: white;
     margin-top: 10vw;
-    border: 5vw solid white;
+    border-width: 5vw 5vw 0;
+    border-style: solid;
+    border-color: white;
 	border-radius: 4px;
     width: 60vw;
     margin: auto;
+    position: relative;
 }
 
 .galleroid-item.active {
     width: 80vw;
+    border-width: 2vw 2vw 0;
 }
 
 .galleroid-preview {
@@ -81,15 +100,16 @@ body {
 }
 
 .galleroid-detail {
-    width: 60vw;
-    height: 0px;
-    display: block;
+    overflow: hidden;
+    display: none;
     margin: auto;
+    padding: 0 0 10vw;
+    position: relative;
+    min-height: 1px;
 }
 
 .galleroid-detail.active {
-    width: 80vw;
-    height: auto;
+    display: block;
 }
 
 .galleroid-buttons {
@@ -107,7 +127,12 @@ body {
     border: none;
 }
 
+.galleroid-text-container {
+    width: 100%;
+}
+
 .galleroid-text {
-	text-align: center;
+    text-align: center;
+    
 	margin: 0;
 }
