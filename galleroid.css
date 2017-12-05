@@ -2,8 +2,6 @@ body {
     background-color: lightcoral;
 }
 
-ol.message_list { position: relative }
-
 .galleroid {
 	display: flex;
 	align-items: center;
@@ -35,15 +33,16 @@ ol.message_list { position: relative }
     border-width: 5vw 5vw 0;
     border-style: solid;
     border-color: white;
-	border-radius: 4px;
+	border-radius: 2px;
     width: 60vw;
-    margin: auto;
-    position: relative;
+    margin: 10vw auto;
 }
 
 .galleroid-item.active {
-    width: 80vw;
+    width: 88vw;
     border-width: 2vw 2vw 0;
+    border-radius: 4px;
+    margin-top: 2vw;
 }
 
 .galleroid-preview {
@@ -55,13 +54,14 @@ ol.message_list { position: relative }
     width: 60vw;
     height: 60vw;
     background-color: grey;
-    border-radius: 4px;
+    border-radius: 2px;
     margin: auto;
 }
 
 .galleroid-picture-container.active {
-    width: 80vw;
-    height: 80vw;
+    width: 88vw;
+    height: 88vw;
+    border-radius: 4px;
 }
 
 .galleroid-picture {
@@ -92,7 +92,8 @@ ol.message_list { position: relative }
 	padding: 7vw;
 	max-width: 70vw;
 	text-align: center;
-	margin: auto;
+    margin: auto;
+    z-index: 1;
 }
 
 .galleroid-title.active {
@@ -105,11 +106,14 @@ ol.message_list { position: relative }
     margin: auto;
     padding: 0 0 10vw;
     position: relative;
-    min-height: 1px;
+    /*min-height: 1px;*/
+    z-index: 2;
+    height: 100px;
 }
 
 .galleroid-detail.active {
     display: block;
+    
 }
 
 .galleroid-buttons {
