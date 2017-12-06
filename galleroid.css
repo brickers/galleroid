@@ -35,14 +35,16 @@ body {
     border-color: white;
 	border-radius: 2px;
     width: 60vw;
-    margin: 10vw auto;
+    margin: 13vw;
 }
 
 .galleroid-item.active {
-    width: 88vw;
+    width: 89vw;
     border-width: 2vw 2vw 0;
     border-radius: 4px;
     margin-top: 2vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
 }
 
 .galleroid-preview {
@@ -59,8 +61,8 @@ body {
 }
 
 .galleroid-picture-container.active {
-    width: 88vw;
-    height: 88vw;
+    width: 89vw;
+    height: 89vw;
     border-radius: 4px;
 }
 
@@ -98,6 +100,7 @@ body {
 
 .galleroid-title.active {
     transform: scale(1.5);
+    padding: 5vw 5vw 2vw;
 }
 
 .galleroid-detail {
@@ -106,9 +109,7 @@ body {
     margin: auto;
     padding: 0 0 10vw;
     position: relative;
-    /*min-height: 1px;*/
-    z-index: 2;
-    height: 100px;
+    height: 150px;
 }
 
 .galleroid-detail.active {
@@ -120,6 +121,7 @@ body {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    margin-bottom: 12px;
 }
 
 .galleroid-buttons button {
@@ -129,14 +131,21 @@ body {
     color: white;
     background-color: lightgrey;
     border: none;
+    z-index: 2;
 }
 
 .galleroid-text-container {
     width: 100%;
+    height: 126px;
 }
 
 .galleroid-text {
     text-align: center;
-    
-	margin: 0;
+    margin: 0;
+    overflow: hidden;
+    white-space: normal;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    max-height: 126px;
 }
