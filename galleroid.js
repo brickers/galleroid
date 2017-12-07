@@ -32,7 +32,7 @@ $(document).ready(function ($) {
             }, exitDuration);
         }
 
-        // active current gallery item
+        // activate current gallery item
         item.toggleClass('active');
         pic.toggleClass('active');
         title.toggleClass('active');
@@ -47,7 +47,7 @@ $(document).ready(function ($) {
                              next.stop(true, true).fadeOut({    duration: exitDuration,
                                                                 complete: function(){next.removeClass('active')}});
 
-        // dective all other gallery items
+        // deactivate all other gallery items
         $('.galleroid-item').not(item).removeClass('active');
         $('.galleroid-picture-container').not(pic).removeClass('active');
         $('.galleroid-title').not(title).removeClass('active');

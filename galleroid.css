@@ -1,13 +1,15 @@
+/* Mobile */
+
 body {
     background-color: lightcoral;
 }
 
 #galleroid {
 	display: flex;
-	align-items: center;
-  	justify-content: center;
-  	flex-direction: column;
-  	width: 80%;
+  	justify-content: space-around;
+    flex-flow: row wrap;
+    flex-basis: auto;  
+  	width: 100%;
   	margin: 0 auto 0;
 }
 
@@ -29,7 +31,7 @@ body {
 
 .galleroid-item {
     width: 60vw;
-    margin: 20vw;
+    margin: 10vw 20vw;
     border-width: 5vw 5vw 0;
     background-color: white;
     border-style: solid;
@@ -48,7 +50,7 @@ body {
     width: 96vw;
     border-width: 2vw;
     border-radius: 4px;
-    margin: 2vw;
+    margin: 2vw 2vw 0;
     grid-template-columns: 10vw auto 10vw;
     grid-template-rows: auto auto auto;
 }
@@ -103,20 +105,6 @@ body {
     transform: scale(1.5);
 }
 
-.galleroid-detail {
-    overflow: hidden;
-    display: none;
-    margin: auto;
-    padding: 0 0 10vw;
-    position: relative;
-    height: 150px;
-}
-
-.galleroid-detail.active {
-    display: block;
-    
-}
-
 .galleroid-previous-button,
 .galleroid-next-button {
     display: none;
@@ -135,6 +123,7 @@ body {
 .galleroid-next-button.active {
     display: block;
     width: 10vw;
+    height: 10vw;
     margin: 2vw 0;
 }
 
@@ -167,4 +156,50 @@ body {
     top: 50%;
     transform: translateY(-50%);
     max-height: 126px;
+}
+
+/* Tablet */
+
+@media only screen and (min-width: 500px) {
+    .galleroid-item {
+        width: 30vw;
+        margin: 10vw;
+        border-width: 2.5vw 2.5vw 0;
+        grid-template-rows: auto 7.5vw auto;
+    }
+
+    
+    .galleroid-picture-container {
+        width: 25vw;
+        height: 25vw;
+    }
+
+    .galleroid-previous-button,
+    .galleroid-next-button {
+        height: 5vw;
+        width: 5vw;
+    }
+}
+
+/* Desktop */
+
+@media only screen and (min-width: 750px) {
+    .galleroid-item {
+        width: 15vw;
+        margin: 5vw;
+        border-width: 1.25vw 1.25vw 0;
+        grid-template-rows: auto 3.75vw auto;
+    }
+
+    
+    .galleroid-picture-container {
+        width: 12.5vw;
+        height: 12.5vw;
+    }
+
+    .galleroid-previous-button,
+    .galleroid-next-button {
+        height: 2.5vw;
+        width: 2.5vw;
+    }
 }
