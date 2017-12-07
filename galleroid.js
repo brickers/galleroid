@@ -3,17 +3,17 @@
  */
 
 $(document).ready(function ($) {
-    $('#galleroid').find('.galleroid-item').children('.galleroid-preview').on('click', function (e) {
+    $('#galleroid').find('.galleroid-picture-container').on('click', function (e) {
 
         // set variables
-        var preview = $(this),
-            item = preview.parent(),
-            picContainer = preview.children('.galleroid-picture-container'),
-            detail = item.children('.galleroid-detail'),
-            textContainer = detail.children('.galleroid-text-container'),
-            title = preview.children('.galleroid-title'),
-            itemActiveAtClick = preview.hasClass('active') ? true : false,
-            href = preview.attr("href");
+        var pic = $(this),
+            item = pic.parent(),
+            prev = item.children('.galleroid-previous-button'),
+            title = item.children('.galleroid-title'),
+            next = item.children('.galleroid-next-button'),
+            text = item.children('.galleroid-text-container'),
+            itemActiveAtClick = pic.hasClass('active') ? true : false,
+            href = pic.attr("href");
 
         e.preventDefault();
 
@@ -30,19 +30,19 @@ $(document).ready(function ($) {
         }
 
         // toggle clicked gallery item's active elements
-        preview.toggleClass('active');
         item.toggleClass('active');
-        picContainer.toggleClass('active');
+        pic.toggleClass('active');
+        prev.toggleClass('active');
         title.toggleClass('active');
-        detail.is(":hidden") ? detail.slideDown(250) : detail.slideUp(200);
+        next.toggleClass('active');
+        text.is(":hidden") ? text.slideDown(250) : text.slideUp(200);
 
         // remove active elements from all other gallery items
-        $('.galleroid-preview').not(preview).removeClass('active');
+        $('.galleroid-previous-button').not(prev).removeClass('active');
+        $('.galleroid-next-button').not(next).removeClass('active');
         $('.galleroid-item').not(item).removeClass('active');
-        $('.galleroid-picture-container').not(picContainer).removeClass('active');
-        $('.galleroid-detail').not(detail).slideUp(200);
+        $('.galleroid-picture-container').not(pic).removeClass('active');
+        $('.galleroid-text-container').not(text).slideUp(200);
         $('.galleroid-title').not(title).removeClass('active');
-
-        
     });
 });
