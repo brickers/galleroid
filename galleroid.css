@@ -119,22 +119,23 @@ body {
 
 .galleroid-previous-button,
 .galleroid-next-button {
-    width: 10vw;
+    display: none;
+    width: 0;
     height: 10vw;
     border-radius: 4px;
     color: white;
     background-color: lightgrey;
     border: none;
-    display: none;
     padding: 0;
     margin: 0;
+    cursor: pointer;
 }
 
 .galleroid-previous-button.active,
 .galleroid-next-button.active {
     display: block;
+    width: 10vw;
     margin: 2vw 0;
-
 }
 
 .galleroid-previous-button {
@@ -143,6 +144,7 @@ body {
 
 .galleroid-next-button {
     grid-area: next;
+    justify-self: end;
 }
 
 .galleroid-text-container {

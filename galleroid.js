@@ -13,8 +13,11 @@ $(document).ready(function ($) {
             next = item.children('.galleroid-next-button'),
             text = item.children('.galleroid-text-container'),
             itemActiveAtClick = pic.hasClass('active') ? true : false,
-            href = pic.attr("href");
+            href = pic.attr("href"),
+            enterDuration = 250,
+            exitDuration = 200;
 
+        // prevent standard link behaviour
         e.preventDefault();
 
         // scroll to item when expanding only
@@ -26,23 +29,33 @@ $(document).ready(function ($) {
                 $('html, body').stop().animate({
                     scrollTop: offsetTop
                 }, 500, 'swing')
-            }, 200); //needs to be set to same duration as gallery close animation
+            }, exitDuration);
         }
 
-        // toggle clicked gallery item's active elements
+        // active current gallery item
         item.toggleClass('active');
         pic.toggleClass('active');
-        prev.toggleClass('active');
         title.toggleClass('active');
-        next.toggleClass('active');
-        text.is(":hidden") ? text.slideDown(250) : text.slideUp(200);
+        text.is(":hidden") ? text.stop(true, true).slideDown({  duration: enterDuration,
+                                                                complete: function(){text.addClass('active')}}) : 
+                             text.stop(true, true).slideUp({    duration: exitDuration,
+                                                                complete: function(){text.removeClass('active')}});
+        prev.is(":hidden") ? prev.stop(true, true).addClass('active').css('display', 'none').fadeIn(enterDuration) :
+                             prev.stop(true, true).fadeOut({    duration: exitDuration,
+                                                                complete: function(){prev.removeClass('active')}});
+        next.is(":hidden") ? next.stop(true, true).addClass('active').css('display', 'none').fadeIn(enterDuration) :
+                             next.stop(true, true).fadeOut({    duration: exitDuration,
+                                                                complete: function(){next.removeClass('active')}});
 
-        // remove active elements from all other gallery items
-        $('.galleroid-previous-button').not(prev).removeClass('active');
-        $('.galleroid-next-button').not(next).removeClass('active');
+        // dective all other gallery items
         $('.galleroid-item').not(item).removeClass('active');
         $('.galleroid-picture-container').not(pic).removeClass('active');
-        $('.galleroid-text-container').not(text).slideUp(200);
         $('.galleroid-title').not(title).removeClass('active');
+        $('.galleroid-text-container').not(text).stop(true, true).slideUp({ duration: exitDuration, 
+                                                                            complete: function(){$('this').removeClass('active')}});
+        $('.galleroid-previous-button').not(prev).stop(true, true).fadeOut({duration: exitDuration,
+                                                                            complete: function(){$('this').removeClass('active')}});
+        $('.galleroid-next-button').not(next).stop(true, true).fadeOut({    duration: exitDuration,
+                                                                            complete: function(){$('this').removeClass('active')}});
     });
 });
