@@ -39,25 +39,20 @@ body {
     border-radius: 2px;
     display: grid;
     grid-gap: 0px;
-    grid-template-columns:  0       auto    0;
-    grid-template-rows:     auto
-                            15vw 
-                            auto;  
-    grid-template-areas:    'pic    pic     pic' 
-                            'prev   title   next' 
-                            'text   text    text'
+    grid-template-columns: 0 auto 0;
+    grid-template-rows: auto 15vw auto;  
+    grid-template-areas: 'pic pic pic' 
+                         'prev title next' 
+                         'text text text'
 }
 
 .galleroid-item.active {
     width: 96vw;
-    height: calc(100vh - 4vw);
     border-width: 2vw;
     border-radius: 4px;
     margin: 2vw 2vw 0;
-    grid-template-columns:  10vw    72vw    10vw;
-    grid-template-rows:     auto 
-                            14vw 
-                            126px;
+    grid-template-columns: 10vw auto 10vw;
+    grid-template-rows: auto auto auto;
 }
 
 .galleroid-picture-container {
@@ -71,8 +66,8 @@ body {
 }
 
 .galleroid-picture-container.active {
-    width: 100%;
-    height: auto;
+    width: 92vw;
+    height: 92vw;
     border-radius: 4px;
 }
 
@@ -170,17 +165,9 @@ body {
         width: 30vw;
         margin: 10vw;
         border-width: 2.5vw 2.5vw 0;
-        grid-template-rows: auto
-                            7.5vw
-                            auto;
+        grid-template-rows: auto 7.5vw auto;
     }
 
-    .galleroid-item.active {
-        grid-template-columns:  5vw    82vw    5vw;
-        grid-template-rows:     auto 
-                                9vw 
-                                54px;
-    }
     
     .galleroid-picture-container {
         width: 25vw;
@@ -192,20 +179,6 @@ body {
         height: 5vw;
         width: 5vw;
     }
-
-    .galleroid-previous-button.active,
-    .galleroid-next-button.active {
-        width: 5vw;
-        height: 5vw;
-    }
-
-    .galleroid-text-container {
-        height: 54px;
-    }
-
-    .galleroid-text {
-        max-height: 54px;
-    }
 }
 
 /* Desktop */
@@ -215,39 +188,18 @@ body {
         width: 15vw;
         margin: 5vw;
         border-width: 1.25vw 1.25vw 0;
-        grid-template-rows: auto 
-                            3.75vw 
-                            auto;
+        grid-template-rows: auto 3.75vw auto;
     }
 
-    .galleroid-item.active {
-        width: 98vw;
-        height: calc(100vh - 2vw);
-        border-width: 1vw;
-        border-radius: 4px;
-        margin: 1vw 1vw 0;
-        grid-template-columns:  5vw    86vw    5vw;
-    }
     
     .galleroid-picture-container {
         width: 12.5vw;
         height: 12.5vw;
     }
 
-    .galleroid-picture-container.active {
-        width: 100%;
-        height: auto;
-        border-radius: 4px;
-    }
-
     .galleroid-previous-button,
     .galleroid-next-button {
         height: 2.5vw;
         width: 2.5vw;
-    }
-
-    .galleroid-previous-button.active,
-    .galleroid-next-button.active {
-        margin: 1vw 0;
     }
 }
