@@ -20,13 +20,13 @@ body {
 .galleroid-item,
 .galleroid-picture-container,
 .galleroid-title {
-    transition: all 0.8s ease-in;
+    transition: all 0.2s ease-in;
 }
 
 .galleroid-item.active,
 .galleroid-picture-container.active,
 .galleroid-title.active {
-    transition: all 1s ease-out;
+    transition: all 0.25s ease-out;
 }
 
 .galleroid-item-wrapper {
@@ -60,10 +60,10 @@ body {
 }
 
 .galleroid-item.active {
-    width: 96vw;
+    width: 96%;
     border-width: 2vw;
     border-radius: 4px;
-    grid-template-columns:  10vw    auto    10vw;
+    grid-template-columns:  10%    auto    10%;
     grid-template-rows:     auto
                             auto
                             auto;
@@ -81,9 +81,10 @@ body {
 }
 
 .galleroid-picture-container.active {
-    width: 92vw;
+    width: 89vw;
     height: calc(100vh - 22vw - 126px);
     border-radius: 4px;
+    margin: 0 auto;
 }
 
 .galleroid-picture {
@@ -192,6 +193,10 @@ body {
                             auto;
     }
 
+    .galleroid-item.active {
+        width: 192%
+    }
+
     .galleroid-picture-container {
         width: 25vw;
         height: 25vw;
@@ -227,8 +232,8 @@ body {
 
     .galleroid-item.active {
         border-width: 1vw;
-        width: 98vw;
-        grid-template-columns:  5vw    auto    5vw;
+        width: 392%;
+        grid-template-columns:  5%    auto    5%;
     }
 
     .galleroid-picture-container {
@@ -237,8 +242,8 @@ body {
     }
 
     .galleroid-picture-container.active {
-        height: calc(100vh - 11vw - 54px);
         width: 96vw;
+        height: calc(100vh - 11vw - 54px);
     }
 
     .galleroid-title {

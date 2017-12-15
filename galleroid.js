@@ -14,8 +14,8 @@ $(document).ready(function ($) {
             text = item.children('.galleroid-text-container'),
             itemActiveAtClick = pic.hasClass('active') ? true : false,
             href = pic.attr("href"),
-            enterDuration = 1000,
-            exitDuration = 800;
+            enterDuration = 250,
+            exitDuration = 200;
 
         // prevent standard link behaviour
         e.preventDefault();
