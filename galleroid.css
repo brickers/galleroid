@@ -180,6 +180,18 @@ body {
 /* Tablet */
 
 @media only screen and (min-width: 500px) {
+    .galleroid-item-wrapper:nth-child(4n+1) > .galleroid-item,
+    .galleroid-item-wrapper:nth-child(4n+3) > .galleroid-item  {
+        margin-left: 12vw;
+        margin-right: 8vw;
+    }
+
+    .galleroid-item-wrapper:nth-child(4n) > .galleroid-item,
+    .galleroid-item-wrapper:nth-child(4n+2) > .galleroid-item {
+        margin-right: 12vw;
+        margin-left: 8vw;
+    }
+
     .galleroid-item-wrapper {
         height: 45vw;
         width: 50%;
@@ -187,7 +199,8 @@ body {
 
     .galleroid-item {
         width: 30vw;
-        margin: 10vw;
+        margin-top: 10vw;
+        margin-bottom: 10vw;
         border-width: 2.5vw 2.5vw 0;
         grid-template-rows: auto
                             7.5vw
@@ -236,6 +249,26 @@ body {
 /* Desktop */
 
 @media only screen and (min-width: 750px) {
+    .galleroid-item-wrapper:nth-child(4n+1) > .galleroid-item {
+        margin-left: 6.5vw;
+        margin-right: 3.5vw;
+    }
+
+    .galleroid-item-wrapper:nth-child(4n+2) > .galleroid-item {
+        margin-left: 5.5vw;
+        margin-right: 4.5vw;
+    }
+
+    .galleroid-item-wrapper:nth-child(4n+3) > .galleroid-item {
+        margin-left: 4.5vw;
+        margin-right: 5.5vw;
+    }
+
+    .galleroid-item-wrapper:nth-child(4n) > .galleroid-item {
+        margin-left: 3.5vw;
+        margin-right: 6.5vw;
+    }
+
     .galleroid-item-wrapper {
         height: 22.5vw;
         width: 25%;
@@ -243,7 +276,8 @@ body {
 
     .galleroid-item {
         width: 15vw;
-        margin: 5vw;
+        margin-top: 5vw;
+        margin-bottom: 5vw;
         border-width: 1.25vw 1.25vw 0;
         grid-template-rows: auto
                             3.75vw
