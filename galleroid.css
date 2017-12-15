@@ -116,10 +116,12 @@ body {
 	text-align: center;
     margin: auto;
     grid-area: title;
+    max-width: 50vw;
 }
 
 .galleroid-title.active {
     transform: scale(1.5);
+    max-width: 46vw;
 }
 
 .galleroid-previous-button,
