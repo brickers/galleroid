@@ -14,8 +14,8 @@ $(document).ready(function ($) {
             text = item.children('.galleroid-text-container'),
             itemActiveAtClick = pic.hasClass('active') ? true : false,
             href = pic.attr("href"),
-            enterDuration = 250,
-            exitDuration = 200;
+            enterDuration = 1000,
+            exitDuration = 800;
 
         // prevent standard link behaviour
         e.preventDefault();
@@ -60,10 +60,18 @@ $(document).ready(function ($) {
 });
 
 function setMargins(element) {
-    var   targetMargin = $(window).width() / 50,
-          offset = element.parent()[0].getBoundingClientRect();//.offset(),
-          activeMarginTop = targetMargin - offset.top,
+    var   targetMargin,
+          offset = element.parent()[0].getBoundingClientRect();
+
+    // make galleroid responsive by reducing margin size on big screens
+    if ($(window).width() >= 750) {
+        targetMargin = $(window).width() / 100;
+    } else {
+        targetMargin = $(window).width() / 50;
+    }
+
+    var   activeMarginTop = targetMargin - offset.top,
           activeMarginLeft = targetMargin - offset.left;
-    
-    element.css({'margin-top': activeMarginTop,'margin-left': activeMarginLeft});
+
+    element.css({'margin-top': activeMarginTop,'margin-left': activeMarginLeft, 'margin-bottom': '0', 'margin-right': '0'});
 }

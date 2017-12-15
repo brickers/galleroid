@@ -20,13 +20,13 @@ body {
 .galleroid-item,
 .galleroid-picture-container,
 .galleroid-title {
-    transition: all 0.2s ease-in;
+    transition: all 0.8s ease-in;
 }
 
 .galleroid-item.active,
 .galleroid-picture-container.active,
 .galleroid-title.active {
-    transition: all 0.25s ease-out;
+    transition: all 1s ease-out;
 }
 
 .galleroid-item-wrapper {
@@ -67,8 +67,6 @@ body {
     grid-template-rows:     auto
                             auto
                             auto;
-
-
     z-index: 10;
 }
 
@@ -199,6 +197,10 @@ body {
         height: 25vw;
     }
 
+    .galleroid-title {
+        max-width: 25vw;
+    }
+
     .galleroid-previous-button,
     .galleroid-next-button {
         height: 5vw;
@@ -223,14 +225,44 @@ body {
                             auto;
     }
 
+    .galleroid-item.active {
+        border-width: 1vw;
+        width: 98vw;
+        grid-template-columns:  5vw    auto    5vw;
+    }
+
     .galleroid-picture-container {
         width: 12.5vw;
         height: 12.5vw;
+    }
+
+    .galleroid-picture-container.active {
+        height: calc(100vh - 11vw - 54px);
+        width: 96vw;
+    }
+
+    .galleroid-title {
+        max-width: 12.5vw;
     }
 
     .galleroid-previous-button,
     .galleroid-next-button {
         height: 2.5vw;
         width: 2.5vw;
+    }
+
+    .galleroid-previous-button.active,
+    .galleroid-next-button.active {
+        height: 5vw;
+        width: 5vw;
+        margin: 1vw 0;
+    }
+
+    .galleroid-text-container {
+        height: 54px;
+    }
+    
+    .galleroid-text.active {
+        max-height: 54px;
     }
 }
