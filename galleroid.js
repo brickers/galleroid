@@ -14,26 +14,21 @@ $(document).ready(function ($) {
             text = item.children('.galleroid-text-container'),
             itemActiveAtClick = pic.hasClass('active') ? true : false,
             href = pic.attr("href"),
-            enterDuration = 1000,
-            exitDuration = 800;
+            enterDuration = 250,
+            exitDuration = 200;
 
         // prevent standard link behaviour
         e.preventDefault();
 
-        // scroll to item when expanding only
-        if (!itemActiveAtClick) {
-            // delay scroll until after resizing has finished
-            setTimeout(function () {
-                var itemMarginTop = (item.outerWidth(true) - item.outerWidth()) / 2;
-                var offsetTop = href === "#" ? 0 : $(href).offset().top - itemMarginTop;
-                $('html, body').stop().animate({
-                    scrollTop: offsetTop
-                }, 500, 'swing')
-            }, exitDuration);
+        // activate current gallery item and its constituents
+        if (item.hasClass('active')) {
+            item.removeAttr('style');
+            item.removeClass('active');
+        } else {
+            setMargins(item);
+            item.addClass('active');
         }
 
-        // activate current gallery item
-        item.toggleClass('active');
         pic.toggleClass('active');
         title.toggleClass('active');
         text.is(":hidden") ? text.stop(true, true).slideDown({  duration: enterDuration,
@@ -48,7 +43,7 @@ $(document).ready(function ($) {
                                                                 complete: function(){next.removeClass('active')}});
 
         // deactivate all other gallery items
-        $('.galleroid-item').not(item).removeClass('active');
+        $('.galleroid-item').not(item).removeClass('active').removeAttr('style');
         $('.galleroid-picture-container').not(pic).removeClass('active');
         $('.galleroid-title').not(title).removeClass('active');
         $('.galleroid-text-container').not(text).stop(true, true).slideUp({ duration: exitDuration, 
@@ -58,4 +53,17 @@ $(document).ready(function ($) {
         $('.galleroid-next-button').not(next).stop(true, true).fadeOut({    duration: exitDuration,
                                                                             complete: function(){$('this').removeClass('active')}});
     });
+
+    $(window).resize(function() {
+        setMargins($('.galleroid-item.active'));
+    });
 });
+
+function setMargins(element) {
+    var   targetMargin = $(window).width() / 50,
+          offset = element.parent()[0].getBoundingClientRect();//.offset(),
+          activeMarginTop = targetMargin - offset.top,
+          activeMarginLeft = targetMargin - offset.left;
+    
+    element.css({'margin-top': activeMarginTop,'margin-left': activeMarginLeft});
+}
