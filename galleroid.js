@@ -54,6 +54,16 @@ $(document).ready(function ($) {
                                                                             complete: function(){$('this').removeClass('active')}});
     });
 
+    $('.galleroid-previous-button').on('click', function (e) {
+        var item = $(this).parent();
+        navigateDetailForwards(false, item);
+    });
+
+    $('.galleroid-next-button').on('click', function (e) {
+        var item = $(this).parent();
+        navigateDetailForwards(true, item);
+    });
+
     $(window).resize(function() {
         setMargins($('.galleroid-item.active'));
     });
@@ -74,4 +84,43 @@ function setMargins(element) {
           activeMarginLeft = targetMargin - offset.left;
 
     element.css({'margin-top': activeMarginTop,'margin-left': activeMarginLeft, 'margin-bottom': '0', 'margin-right': '0'});
+}
+
+function navigateDetailForwards(goForwards, item) {
+    var activeIndex = 3,
+        detailItems = item.find('.galleroid-picture'),
+        detailItemsCount = detailItems.length;
+
+        
+
+
+    for (i = 0; i < detailItemsCount; i++) {
+        console.log('i = ' + i);
+        if (detailItems.eq(i).hasClass('active')) {
+            activeIndex = i;
+            i = detailItemsCount;
+        }
+    }
+
+    /*
+     * count number of detail items
+     * find index of current active item
+     * determine whether incrementing or decrementing
+     * if acting would take out of bounds, do nothing
+     * otherwise update this and next items with correct classes
+     */
+
+    if (goForwards == true) {
+        if (activeIndex + 1 < detailItemsCount) {
+            // increment
+            detailItems.eq(activeIndex).removeClass('active').addClass('hidden-left');
+            detailItems.eq(activeIndex + 1).removeClass('hidden-right').addClass('active');
+        }
+    } else if (goForwards == false) {
+        if (activeIndex > 0) {
+            // decrement
+            detailItems.eq(activeIndex).removeClass('active').addClass('hidden-right');
+            detailItems.eq(activeIndex - 1).removeClass('hidden-left').addClass('active');
+        }
+    }
 }

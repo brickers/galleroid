@@ -79,6 +79,8 @@ body {
     cursor: pointer;
     grid-area: pic;
     transition: height 0.2s ease-in;
+    z-index: inherit;
+    overflow: hidden;
 }
 
 .galleroid-picture-container.active {
@@ -89,19 +91,51 @@ body {
 }
 
 .galleroid-picture {
-    display: none;
     object-fit: contain;
 	margin: auto;
   	width: 100%;
   	height: 100%;
-    border-radius: 4px;
-    transition: all 0.2s ease-in;
 }
 
 .galleroid-picture.active {
-    display: block;
-    transition: all 0.25s ease-out;
-    width: 80vw;
+    animation: hidden 1s 1;
+}
+
+.galleroid-picture.hidden-right {
+    z-index: 11;
+    animation: slide-from-right 1s 1;
+}
+
+.galleroid-picture.hidden-left {
+    z-index: 11;
+    animation: slide-from-left 1s 1;
+}
+
+@keyframes slide-from-right {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes slide-from-left {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes hidden {
+    0% {
+        z-index: 10;
+    }
+    100% {
+        z-index: 10;
+    }
 }
 
 .galleroid-title {
