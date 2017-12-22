@@ -18,12 +18,14 @@ body {
 }
 
 .galleroid-item,
-.galleroid-title {
+.galleroid-title,
+.galleroid-picture {
     transition: all 0.2s ease-in;
 }
 
 .galleroid-item.active,
-.galleroid-title.active {
+.galleroid-title.active,
+.galleroid-picture-container.active > .galleroid-picture {
     transition: all 0.25s ease-out;
 }
 
@@ -88,54 +90,33 @@ body {
     border-radius: 4px;
     margin: 0 auto;
     transition: height 0.25s ease-out;
+    position: relative;
 }
 
 .galleroid-picture {
     object-fit: contain;
-	margin: auto;
-  	width: 100%;
-  	height: 100%;
+    width: 100%;
+    height: 50vw;
+    position: absolute;
+}
+
+.galleroid-picture-container.active > .galleroid-picture {
+    height: calc(100vh - 22vw - 126px);
 }
 
 .galleroid-picture.active {
-    animation: hidden 1s 1;
-}
-
-.galleroid-picture.hidden-right {
-    z-index: 11;
-    animation: slide-from-right 1s 1;
+    opacity: 1;
+    transform: translateX(0%);
 }
 
 .galleroid-picture.hidden-left {
-    z-index: 11;
-    animation: slide-from-left 1s 1;
+    opacity: 0;
+    transform: translateX(-100%);
 }
 
-@keyframes slide-from-right {
-    0% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateY(0%);
-    }
-}
-
-@keyframes slide-from-left {
-    0% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateY(0%);
-    }
-}
-
-@keyframes hidden {
-    0% {
-        z-index: 10;
-    }
-    100% {
-        z-index: 10;
-    }
+.galleroid-picture.hidden-right {
+    opacity: 0;
+    transform: translateX(100%);
 }
 
 .galleroid-title {
@@ -246,11 +227,15 @@ body {
         grid-template-columns:  5%    auto    5%;
     }
 
-    .galleroid-picture-container {
+    .galleroid-picture-container,
+    .galleroid-picture {
         height: 25vw;
     }
 
-    .galleroid-picture-container.active {
+    
+
+    .galleroid-picture-container.active,
+    .galleroid-picture-container.active > .galleroid-picture {
         height: calc(100vh - 17vw - 54px);
     }
 
@@ -323,11 +308,13 @@ body {
         width: 392%;
     }
 
-    .galleroid-picture-container {
+    .galleroid-picture-container,
+    .galleroid-picture {
         height: 12.5vw;
     }
 
-    .galleroid-picture-container.active {
+    .galleroid-picture-container.active,
+    .galleroid-picture-container.active > .galleroid-picture {
         height: calc(100vh - 11vw - 54px);
     }
 

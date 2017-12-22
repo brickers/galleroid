@@ -56,12 +56,12 @@ $(document).ready(function ($) {
 
     $('.galleroid-previous-button').on('click', function (e) {
         var item = $(this).parent();
-        navigateDetailForwards(false, item);
+        navigateDetail(false, item);
     });
 
     $('.galleroid-next-button').on('click', function (e) {
         var item = $(this).parent();
-        navigateDetailForwards(true, item);
+        navigateDetail(true, item);
     });
 
     $(window).resize(function() {
@@ -86,7 +86,7 @@ function setMargins(element) {
     element.css({'margin-top': activeMarginTop,'margin-left': activeMarginLeft, 'margin-bottom': '0', 'margin-right': '0'});
 }
 
-function navigateDetailForwards(goForwards, item) {
+function navigateDetail(goForwards, item) {
     var activeIndex = 3,
         detailItems = item.find('.galleroid-picture'),
         detailItemsCount = detailItems.length;
@@ -95,7 +95,6 @@ function navigateDetailForwards(goForwards, item) {
 
 
     for (i = 0; i < detailItemsCount; i++) {
-        console.log('i = ' + i);
         if (detailItems.eq(i).hasClass('active')) {
             activeIndex = i;
             i = detailItemsCount;
