@@ -88,16 +88,15 @@ function setMargins(element) {
 
 function navigateDetail(goForwards, item) {
     var activeIndex = 3,
-        detailItems = item.find('.galleroid-picture'),
-        detailItemsCount = detailItems.length;
+        detailPicItems = item.find('.galleroid-picture'),
+        detailTextItems = item.find('.galleroid-text'),
+        detailPicItemsCount = detailPicItems.length;
 
-        
-
-
-    for (i = 0; i < detailItemsCount; i++) {
-        if (detailItems.eq(i).hasClass('active')) {
+    // find index of currently-active detail item
+    for (i = 0; i < detailPicItemsCount; i++) {
+        if (detailPicItems.eq(i).hasClass('active')) {
             activeIndex = i;
-            i = detailItemsCount;
+            i = detailPicItemsCount;
         }
     }
 
@@ -110,16 +109,20 @@ function navigateDetail(goForwards, item) {
      */
 
     if (goForwards == true) {
-        if (activeIndex + 1 < detailItemsCount) {
+        if (activeIndex + 1 < detailPicItemsCount) {
             // increment
-            detailItems.eq(activeIndex).removeClass('active').addClass('hidden-left');
-            detailItems.eq(activeIndex + 1).removeClass('hidden-right').addClass('active');
+            detailPicItems.eq(activeIndex).removeClass('active').addClass('hidden-left');
+            detailPicItems.eq(activeIndex + 1).removeClass('hidden-right').addClass('active');
+            detailTextItems.eq(activeIndex).removeClass('active').addClass('hidden-left');
+            detailTextItems.eq(activeIndex + 1).removeClass('hidden-right').addClass('active');
         }
     } else if (goForwards == false) {
         if (activeIndex > 0) {
             // decrement
-            detailItems.eq(activeIndex).removeClass('active').addClass('hidden-right');
-            detailItems.eq(activeIndex - 1).removeClass('hidden-left').addClass('active');
+            detailPicItems.eq(activeIndex).removeClass('active').addClass('hidden-right');
+            detailPicItems.eq(activeIndex - 1).removeClass('hidden-left').addClass('active');
+            detailTextItems.eq(activeIndex).removeClass('active').addClass('hidden-right');
+            detailTextItems.eq(activeIndex - 1).removeClass('hidden-left').addClass('active');
         }
     }
 }

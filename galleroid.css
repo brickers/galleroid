@@ -19,13 +19,15 @@ body {
 
 .galleroid-item,
 .galleroid-title,
-.galleroid-picture {
+.galleroid-picture,
+.galleroid-text {
     transition: all 0.2s ease-in;
 }
 
 .galleroid-item.active,
 .galleroid-title.active,
-.galleroid-picture-container.active > .galleroid-picture {
+.galleroid-picture-container.active > .galleroid-picture,
+.galleroid-text-container.active > .galleroid-text {
     transition: all 0.25s ease-out;
 }
 
@@ -83,6 +85,7 @@ body {
     transition: height 0.2s ease-in;
     z-index: inherit;
     overflow: hidden;
+    position: relative;
 }
 
 .galleroid-picture-container.active {
@@ -90,7 +93,6 @@ body {
     border-radius: 4px;
     margin: 0 auto;
     transition: height 0.25s ease-out;
-    position: relative;
 }
 
 .galleroid-picture {
@@ -104,17 +106,20 @@ body {
     height: calc(100vh - 22vw - 126px);
 }
 
-.galleroid-picture.active {
+.galleroid-picture.active,
+.galleroid-text.active {
     opacity: 1;
     transform: translateX(0%);
 }
 
-.galleroid-picture.hidden-left {
+.galleroid-picture.hidden-left,
+.galleroid-text.hidden-left {
     opacity: 0;
     transform: translateX(-100%);
 }
 
-.galleroid-picture.hidden-right {
+.galleroid-picture.hidden-right,
+.galleroid-text.hidden-right {
     opacity: 0;
     transform: translateX(100%);
 }
@@ -179,6 +184,7 @@ body {
 
 .galleroid-text-container.active {
     display: block;
+    position: absolute;
 }
 
 .galleroid-text {
@@ -187,7 +193,7 @@ body {
     overflow: hidden;
     white-space: normal;
     position: relative;
-    top: 50%;
+    top: 0;
     transform: translateY(-50%);
     max-height: 126px;
 }
