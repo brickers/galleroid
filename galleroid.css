@@ -19,6 +19,7 @@ body {
 .galleroid-item,
 .galleroid-title,
 .galleroid-picture,
+.galleroid-bg-picture,
 .galleroid-text {
     transition: all 0.2s ease-in;
 }
@@ -26,6 +27,7 @@ body {
 .galleroid-item.active,
 .galleroid-title.active,
 .galleroid-picture-container.active > .galleroid-picture,
+.galleroid-picture-container.active > .galleroid-bg-picture,
 .galleroid-text-container.active > .galleroid-text {
     transition: all 0.25s ease-out;
 }
@@ -94,15 +96,36 @@ body {
     transition: height 0.25s ease-out;
 }
 
-.galleroid-picture {
-    object-fit: contain;
+.galleroid-picture,
+.galleroid-bg-picture {
     width: 100%;
     height: 50vw;
     position: absolute;
 }
 
-.galleroid-picture-container.active > .galleroid-picture {
+.galleroid-picture {
+    object-fit: contain;
+    z-index: 21;
+}
+
+.galleroid-bg-picture {
+    filter: brightness(60%) blur(20px);
+    object-fit: cover;
+    z-index: 20;
+}
+
+.galleroid-picture-container.active > .galleroid-picture,
+.galleroid-picture-container.active > .galleroid-bg-picture {
     height: calc(100vh - 22vw - 126px);
+}
+
+.galleroid-bg-picture.active {
+    opacity: 1;
+}
+
+.galleroid-bg-picture.hidden-left,
+.galleroid-bg-picture.hidden-right {
+    opacity: 0;
 }
 
 .galleroid-picture.active,
@@ -233,14 +256,14 @@ body {
     }
 
     .galleroid-picture-container,
-    .galleroid-picture {
+    .galleroid-picture,
+    .galleroid-bg-picture {
         height: 25vw;
     }
 
-    
-
     .galleroid-picture-container.active,
-    .galleroid-picture-container.active > .galleroid-picture {
+    .galleroid-picture-container.active > .galleroid-picture,
+    .galleroid-picture-container.active > .galleroid-bg-picture {
         height: calc(100vh - 17vw - 54px);
     }
 
@@ -314,12 +337,14 @@ body {
     }
 
     .galleroid-picture-container,
-    .galleroid-picture {
+    .galleroid-picture,
+    .galleroid-bg-picture {
         height: 12.5vw;
     }
 
     .galleroid-picture-container.active,
-    .galleroid-picture-container.active > .galleroid-picture {
+    .galleroid-picture-container.active > .galleroid-picture,
+    .galleroid-picture-container.active > .galleroid-bg-picture  {
         height: calc(100vh - 11vw - 54px);
     }
 

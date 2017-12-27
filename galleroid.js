@@ -89,6 +89,7 @@ function setMargins(element) {
 function navigateDetail(goForwards, item) {
     var activeIndex = 3,
         detailPicItems = item.find('.galleroid-picture'),
+        detailBGPicItems = item.find('.galleroid-bg-picture'),
         detailTextItems = item.find('.galleroid-text'),
         detailPicItemsCount = detailPicItems.length;
 
@@ -113,6 +114,8 @@ function navigateDetail(goForwards, item) {
             // increment
             detailPicItems.eq(activeIndex).removeClass('active').addClass('hidden-left');
             detailPicItems.eq(activeIndex + 1).removeClass('hidden-right').addClass('active');
+            detailBGPicItems.eq(activeIndex).removeClass('active').addClass('hidden-left');
+            detailBGPicItems.eq(activeIndex + 1).removeClass('hidden-right').addClass('active');
             detailTextItems.eq(activeIndex).removeClass('active').addClass('hidden-left');
             detailTextItems.eq(activeIndex + 1).removeClass('hidden-right').addClass('active');
         }
@@ -121,6 +124,8 @@ function navigateDetail(goForwards, item) {
             // decrement
             detailPicItems.eq(activeIndex).removeClass('active').addClass('hidden-right');
             detailPicItems.eq(activeIndex - 1).removeClass('hidden-left').addClass('active');
+            detailBGPicItems.eq(activeIndex).removeClass('active').addClass('hidden-right');
+            detailBGPicItems.eq(activeIndex - 1).removeClass('hidden-left').addClass('active');
             detailTextItems.eq(activeIndex).removeClass('active').addClass('hidden-right');
             detailTextItems.eq(activeIndex - 1).removeClass('hidden-left').addClass('active');
         }
