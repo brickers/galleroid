@@ -188,6 +188,7 @@ body {
 }
 
 .galleroid-text {
+    width: 100%;
     text-align: center;
     margin: auto;
     overflow: hidden;
