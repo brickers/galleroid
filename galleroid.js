@@ -109,25 +109,33 @@ function navigateDetail(goForwards, item) {
      * otherwise update this and next items with correct classes
      */
 
+    
+    var direction = 0,
+        classToAdd,
+        classToRemove;
+
     if (goForwards == true) {
+        // increment
         if (activeIndex + 1 < detailPicItemsCount) {
-            // increment
-            detailPicItems.eq(activeIndex).removeClass('active').addClass('hidden-left');
-            detailPicItems.eq(activeIndex + 1).removeClass('hidden-right').addClass('active');
-            detailBGPicItems.eq(activeIndex).removeClass('active').addClass('hidden-left');
-            detailBGPicItems.eq(activeIndex + 1).removeClass('hidden-right').addClass('active');
-            detailTextItems.eq(activeIndex).removeClass('active').addClass('hidden-left');
-            detailTextItems.eq(activeIndex + 1).removeClass('hidden-right').addClass('active');
+            direction = 1;
+            classToAdd = 'hidden-left';
+            classToRemove = 'hidden-right';
         }
     } else if (goForwards == false) {
+        // decrement
         if (activeIndex > 0) {
-            // decrement
-            detailPicItems.eq(activeIndex).removeClass('active').addClass('hidden-right');
-            detailPicItems.eq(activeIndex - 1).removeClass('hidden-left').addClass('active');
-            detailBGPicItems.eq(activeIndex).removeClass('active').addClass('hidden-right');
-            detailBGPicItems.eq(activeIndex - 1).removeClass('hidden-left').addClass('active');
-            detailTextItems.eq(activeIndex).removeClass('active').addClass('hidden-right');
-            detailTextItems.eq(activeIndex - 1).removeClass('hidden-left').addClass('active');
+            direction = -1;
+            classToAdd = 'hidden-right';
+            classToRemove = 'hidden-left';
         }
+    }
+
+    if (direction != 0) {
+        detailPicItems.eq(activeIndex).removeClass('active').addClass(classToAdd);
+        detailPicItems.eq(activeIndex + direction).removeClass(classToRemove).addClass('active');
+        detailBGPicItems.eq(activeIndex).removeClass('active').addClass(classToAdd);
+        detailBGPicItems.eq(activeIndex + direction).removeClass(classToRemove).addClass('active');
+        detailTextItems.eq(activeIndex).removeClass('active').addClass(classToAdd);
+        detailTextItems.eq(activeIndex + direction).removeClass(classToRemove).addClass('active');
     }
 }
