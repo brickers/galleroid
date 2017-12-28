@@ -6,7 +6,7 @@ body {
 
 #galleroid {
 	display: flex;
-  	justify-content: space-around;
+  	justify-content: space-evenly;
     flex-flow: row wrap;
   	width: 100%;
     margin: 0 auto 0;
@@ -34,13 +34,16 @@ body {
 
 .galleroid-item-wrapper {
     height: 90vw;
-    width: 100%;
+    width: 60%;
     overflow: visible;
 }
 
 .galleroid-item {
-    width: 60%;
-    margin: 20vw 20vw 0;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 20vw;
+    margin-bottom: 20vw;
     border-width: 5vw 5vw 0;
     background-color: white;
     border-style: solid;
@@ -64,7 +67,7 @@ body {
 }
 
 .galleroid-item.active {
-    width: 96%;
+    width: 160%;
     border-width: 2vw;
     border-radius: 4px;
     grid-template-columns:  10%    auto    10%;
@@ -223,6 +226,7 @@ body {
 /* Tablet */
 
 @media only screen and (min-width: 500px) {
+    /*
     .galleroid-item-wrapper:nth-child(4n+1) > .galleroid-item,
     .galleroid-item-wrapper:nth-child(4n+3) > .galleroid-item  {
         margin-left: 12vw;
@@ -234,14 +238,17 @@ body {
         margin-right: 12vw;
         margin-left: 8vw;
     }
+    */
 
     .galleroid-item-wrapper {
         height: 45vw;
-        width: 50%;
+        width: 40%;
     }
 
     .galleroid-item {
         width: 30vw;
+        margin-left: 5vw;
+        margin-right: 5vw;
         margin-top: 10vw;
         margin-bottom: 10vw;
         border-width: 2.5vw 2.5vw 0;
@@ -251,7 +258,7 @@ body {
     }
 
     .galleroid-item.active {
-        width: 192%;
+        width: 240%;
         grid-template-columns:  5%    auto    5%;
     }
 
@@ -296,6 +303,7 @@ body {
 /* Desktop */
 
 @media only screen and (min-width: 750px) {
+    /*
     .galleroid-item-wrapper:nth-child(4n+1) > .galleroid-item {
         margin-left: 6.5vw;
         margin-right: 3.5vw;
@@ -315,16 +323,18 @@ body {
         margin-left: 3.5vw;
         margin-right: 6.5vw;
     }
+    */
 
     .galleroid-item-wrapper {
         height: 22.5vw;
-        width: 25%;
+        width: 22%;
     }
 
     .galleroid-item {
         width: 15vw;
         margin-top: 5vw;
-        margin-bottom: 5vw;
+        margin-left: 3.5vw;
+        margin-right: 3.5vw;
         border-width: 1.25vw 1.25vw 0;
         grid-template-rows: auto
                             3.75vw
@@ -333,7 +343,7 @@ body {
 
     .galleroid-item.active {
         border-width: 1vw;
-        width: 392%;
+        width: 445.45%;
     }
 
     .galleroid-picture-container,
