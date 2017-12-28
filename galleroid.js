@@ -1,10 +1,10 @@
-/* On click, open detail section. apply class 'active' to current item, 
- * picture and text containers, and title
- */
+$(function(){
+    $('#galleroid').load('galleroid.html');
+});
 
 $(document).ready(function ($) {
     createBGPics();
-
+    
     $('#galleroid').find('.galleroid-picture-container').on('click', function (e) {
 
         // set variables
