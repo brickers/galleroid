@@ -3,6 +3,8 @@
  */
 
 $(document).ready(function ($) {
+    createBGPics();
+
     $('#galleroid').find('.galleroid-picture-container').on('click', function (e) {
 
         // set variables
@@ -100,15 +102,6 @@ function navigateDetail(goForwards, item) {
             i = detailPicItemsCount;
         }
     }
-
-    /*
-     * count number of detail items
-     * find index of current active item
-     * determine whether incrementing or decrementing
-     * if acting would take out of bounds, do nothing
-     * otherwise update this and next items with correct classes
-     */
-
     
     var direction = 0,
         classToAdd,
@@ -138,4 +131,17 @@ function navigateDetail(goForwards, item) {
         detailTextItems.eq(activeIndex).removeClass('active').addClass(classToAdd);
         detailTextItems.eq(activeIndex + direction).removeClass(classToRemove).addClass('active');
     }
+}
+
+function createBGPics() {
+    var containers = $('#galleroid').find('.galleroid-picture-container');
+
+    containers.each(function(index){
+        var images = $(this).find('.galleroid-picture');
+        images.clone().appendTo($(this));
+
+        images.each(function(index){
+            $(this).removeClass('galleroid-picture').addClass('galleroid-bg-picture');
+        });
+    });
 }
