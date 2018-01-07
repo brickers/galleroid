@@ -65,10 +65,11 @@ body {
     padding: 0;
     z-index: 1;
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+    transform-origin: 0% 0%;
 }
 
 .galleroid-item.active {
-    width: 160%;
+    transform: scale(1.6,1.6):
     border-width: 2vw;
     border-radius: 4px;
     grid-template-columns:  10%    auto    10%;
