@@ -60,7 +60,8 @@ body {
                          '  text    text    text';
     
 
-    position: relative;
+    position: static;
+    animation: deactivate 0.2s;
     padding: 0;
     z-index: 1;
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
@@ -76,6 +77,8 @@ body {
                             auto;
     z-index: 10;
     box-shadow: 0 1vw 4vw 0 rgba(0, 0, 0, 0.5);
+    position: relative;
+    animation: activate 0.25s;
 }
 
 .galleroid-picture-container {
@@ -374,3 +377,29 @@ body {
     }
 
 }
+
+/* Animations */
+
+@keyframes activate {
+    0% {
+      
+    }
+    
+    100% {
+      
+    }
+  }
+  
+  @keyframes deactivate {
+    0% {
+      position: relative;
+    }
+    
+    99% {
+      position: relative;
+    }
+    
+    100% {
+      position: static;
+    }
+  }
