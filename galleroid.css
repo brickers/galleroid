@@ -112,6 +112,24 @@ body {
     position: absolute;
 }
 
+.galleroid-picture,
+.galleroid-text {
+    transition-property: transform, opacity;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in;
+}
+
+.galleroid-picture-container.active > .galleroid-picture,
+.galleroid-text-container.active > .galleroid-text {
+    transition-property: transform, opacity;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-out;
+}
+
+.galleroid-picture-container.active > .galleroid-bg-picture, {
+    transition: opacity 0.25s ease-out;
+}
+
 .galleroid-picture {
     object-fit: contain;
     z-index: 21;
@@ -121,6 +139,7 @@ body {
     filter: brightness(60%) blur(20px);
     object-fit: cover;
     z-index: 20;
+    transition: opacity 0.2s ease-in;
 }
 
 .galleroid-picture-container.active > .galleroid-picture,
