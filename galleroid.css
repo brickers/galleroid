@@ -405,23 +405,26 @@ body {
 
 @keyframes activate {
     0% {
-
+        transform: scale(0.9);
     }
     
     100% {
+        transform: scale(1);
     }
   }
   
   @keyframes deactivate {
     0% {
-      position: relative;
+        transform: scale(1.2);
+        position: relative;
     }
     
     99% {
-      position: relative;
+        position: relative;
     }
     
     100% {
-      position: static;
+        position: static;
+        transform: scale(1);
     }
   }
