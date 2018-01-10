@@ -16,22 +16,6 @@ body {
     box-sizing: border-box;
 }
 
-.galleroid-item,
-.galleroid-title,
-.galleroid-picture.active,
-.galleroid-bg-picture.active,
-.galleroid-text {
-    transition: all 0.2s ease-in;
-}
-
-.galleroid-item.active,
-.galleroid-title.active,
-.galleroid-picture-container.active > .galleroid-picture.active,
-.galleroid-picture-container.active > .galleroid-bg-picture.active,
-.galleroid-text-container.active > .galleroid-text {
-    transition: all 0.25s ease-out;
-}
-
 .galleroid-item-wrapper {
     height: 90vw;
     width: 60%;
@@ -65,7 +49,24 @@ body {
     padding: 0;
     z-index: 1;
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
-    transform-origin: 0% 0%;
+    transition-property: transform, box-shadow;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out;
+}
+
+.galleroid-item:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.galleroid-item:hover > .galleroid-picture-container {
+    transform: scale(1.1);
+}
+
+.galleroid-item.active:hover > .galleroid-picture-container,
+.galleroid-item.active:hover {
+    transform: scale(1);
+    transition: none;
 }
 
 .galleroid-item.active {
@@ -80,6 +81,7 @@ body {
     box-shadow: 0 1vw 4vw 0 rgba(0, 0, 0, 0.5);
     position: relative;
     animation: activate 0.25s;
+    transition: none;
 }
 
 .galleroid-picture-container {
@@ -90,17 +92,17 @@ body {
     margin: 0 auto;
     cursor: pointer;
     grid-area: pic;
-    transition: height 0.2s ease-in;
     z-index: inherit;
     overflow: hidden;
     position: relative;
+    transition: transform 0.1s ease-in-out;
 }
 
 .galleroid-picture-container.active {
     height: calc(100vh - 22vw - 126px);
     border-radius: 4px;
     margin: 0 auto;
-    transition: height 0.25s ease-out;
+    transition: none;
 }
 
 .galleroid-picture,
@@ -166,6 +168,7 @@ body {
     margin: auto;
     grid-area: title;
     max-width: 50vw;
+    transition: transform 0.25s;
 }
 
 .galleroid-title.active {
@@ -383,11 +386,10 @@ body {
 
 @keyframes activate {
     0% {
-      
+
     }
     
     100% {
-      
     }
   }
   

@@ -48,10 +48,8 @@ $(document).ready(function($) {
 
             pic.toggleClass('active');
             title.toggleClass('active');
-            isTextHidden ? text.stop(true, true).slideDown({duration: enterDuration,
-                                                            complete: function(){text.addClass('active')}}) : 
-                           text.stop(true, true).slideUp({  duration: exitDuration,
-                                                            complete: function(){text.removeClass('active')}});
+            isTextHidden ? text.stop(true, true).addClass('active').css('display', 'none').fadeIn(enterDuration) : 
+                           text.stop(true, true).removeClass('active');
             isPrevHidden ? prev.stop(true, true).addClass('active').css('display', 'none').fadeIn(enterDuration) :
                            prev.stop(true, true).fadeOut({  duration: exitDuration,
                                                             complete: function(){prev.removeClass('active')}});
