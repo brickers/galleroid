@@ -18,16 +18,16 @@ body {
 
 .galleroid-item,
 .galleroid-title,
-.galleroid-picture,
-.galleroid-bg-picture,
+.galleroid-picture.active,
+.galleroid-bg-picture.active,
 .galleroid-text {
     transition: all 0.2s ease-in;
 }
 
 .galleroid-item.active,
 .galleroid-title.active,
-.galleroid-picture-container.active > .galleroid-picture,
-.galleroid-picture-container.active > .galleroid-bg-picture,
+.galleroid-picture-container.active > .galleroid-picture.active,
+.galleroid-picture-container.active > .galleroid-bg-picture.active,
 .galleroid-text-container.active > .galleroid-text {
     transition: all 0.25s ease-out;
 }
@@ -69,7 +69,7 @@ body {
 }
 
 .galleroid-item.active {
-    transform: scale(1.6,1.6):
+    width: 160%;
     border-width: 2vw;
     border-radius: 4px;
     grid-template-columns:  10%    auto    10%;
