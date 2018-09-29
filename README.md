@@ -20,6 +20,4 @@ This is a responsive picture gallery suited to showing project work, with a pola
   * Create a div element with the id 'galleroid' at the place in your HTML file where you'd like galleroid to appear
   * Include jQuery 3.2.1 or greater, galleroid-navigation.js and galleroid.css in that HTML file
 
-Galleroid uses a method to inject itself into the page that works only when that page is hosted on a server - for security reasons it does not work for local files. Therefore you may need to run a simple local test server (e.g. Python's SimpleHTTPServer) to see results before deploying
-
-You can see Galleroid in action [here](http://www.galleroid.feargusbrickley.com)
+Galleroid uses a method to inject itself into the page that works only when that page is hosted on a server - for security reasons it does not work for local files. Therefore you may need to run a simple local test server (e.g. Python's SimpleHTTPServer) to see results before deploying.
