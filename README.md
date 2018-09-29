@@ -18,6 +18,6 @@ This is a responsive picture gallery suited to showing project work, with a pola
 4. In the galleroid folder, run `node galleroid-build` to generate the appropriate HTML. Alternatively you can build this manually, in which case you can use whatever file.folder structure you wish
 4. Insert galleroid into your code:
   * Create a div element with the id 'galleroid' at the place in your HTML file where you'd like galleroid to appear
-  * Include jQuery 3.2.1 or greater, galleroid.js and galleroid.css in that HTML file
+  * Include jQuery 3.2.1 or greater, galleroid-navigation.js and galleroid.css in that HTML file
 
 You can see Galleroid in action [here](http://www.galleroid.feargusbrickley.com)
