@@ -1,14 +1,3 @@
-/*
-- [*] Look for projects folder. 
-- [*] Create array of project folders
-- [ ] For each project, look for project.json. 
-- [ ] For each project look for images folder. 
-- [ ] Create array of images
-- [ ] Create project HTML scaffold
-- [ ] Loop through image array and create html, bringing in captions where available
-- [ ] Output galleroid.html
-*/
-
 const fs = require('fs');
 const path = require('path');
 var projectsFolder = "./projects/";
