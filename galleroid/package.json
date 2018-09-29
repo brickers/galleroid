@@ -1,0 +1,11 @@
+{
+  "name": "galleroid-build",
+  "version": "1.0.0",
+  "description": "A script to scan for project files and build an HTML structure for use with galleroid web picture gallery (https://github.com/brickers/galleroid).",
+  "main": "galleroid-build.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Feargus Brickley",
+  "license": "MIT"
+}

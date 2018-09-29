@@ -22,8 +22,6 @@ $(document).ready(function($) {
                 title = item.children('.galleroid-title'),
                 next = item.children('.galleroid-next-button'),
                 text = item.children('.galleroid-text-container'),
-                isItemActive = pic.hasClass('active'),
-                href = pic.attr("href"),
                 isTextHidden = text.is(":hidden"),
                 isPrevHidden = prev.is(":hidden"),
                 isNextHidden = next.is(":hidden"),

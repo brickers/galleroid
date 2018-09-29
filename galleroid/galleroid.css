@@ -415,7 +415,6 @@ body {
   
   @keyframes deactivate {
     0% {
-
         position: relative;
     }
     
@@ -425,6 +424,5 @@ body {
     
     100% {
         position: static;
-
     }
   }
