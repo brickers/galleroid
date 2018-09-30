@@ -2,8 +2,6 @@ $(document).ready(function($) {
 
     $('#galleroid').load('galleroid.html', function() {
 
-        createBGPics();
-
         var items = $('.galleroid-item'),
             pics = $('.galleroid-picture-container'),
             titles = $('.galleroid-title'),
@@ -143,17 +141,4 @@ function navigateDetail(goForwards, item) {
         detailTextItems.eq(activeIndex).removeClass('active').addClass(classToAdd);
         detailTextItems.eq(activeIndex + direction).removeClass(classToRemove).addClass('active');
     }
-}
-
-function createBGPics() {
-    var containers = $('#galleroid').find('.galleroid-picture-container');
-
-    containers.each(function(index){
-        var images = $(this).find('.galleroid-picture');
-        images.clone().appendTo($(this));
-
-        images.each(function(index){
-            $(this).removeClass('galleroid-picture').addClass('galleroid-bg-picture');
-        });
-    });
 }

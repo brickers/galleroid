@@ -120,7 +120,7 @@ function Project(projectPath) {
         var results = '';
         for (var i = 0; i < this.imagePaths.length; i++) {
             results = `${results}
-            <img src="${this.imagePaths[i]}" class="galleroid-picture ${i == 0 ? 'active' : 'hidden-right'}" width="100" height="100">`;
+            <img src="${this.imagePaths[i]}" class="galleroid-fg-picture ${i == 0 ? 'active' : 'hidden-right'}" width="100" height="100">`;
         }
         return results;
     }
