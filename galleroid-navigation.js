@@ -5,7 +5,7 @@ $(document).ready(function($) {
         var items = $('.galleroid-item'),
             pics = $('.galleroid-picture-container'),
             titles = $('.galleroid-title'),
-            texts = $('.galleroid-text-container'),
+            texts = $('.galleroid-caption-container'),
             prevs = $('.galleroid-previous-button'),
             nexts = $('.galleroid-next-button'),
             enterDuration = 250,
@@ -19,7 +19,7 @@ $(document).ready(function($) {
                 prev = item.children('.galleroid-previous-button'),
                 title = item.children('.galleroid-title'),
                 next = item.children('.galleroid-next-button'),
-                text = item.children('.galleroid-text-container'),
+                text = item.children('.galleroid-caption-container'),
                 isTextHidden = text.is(":hidden"),
                 isPrevHidden = prev.is(":hidden"),
                 isNextHidden = next.is(":hidden"),
@@ -102,7 +102,7 @@ function navigateDetail(goForwards, item) {
     var activeIndex = 3,
         detailPicItems = item.find('.galleroid-picture'),
         detailBGPicItems = item.find('.galleroid-bg-picture'),
-        detailTextItems = item.find('.galleroid-text'),
+        detailTextItems = item.find('.galleroid-caption'),
         detailPicItemsCount = detailPicItems.length;
 
     // find index of currently-active detail item

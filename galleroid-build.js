@@ -138,7 +138,7 @@ function Project(projectPath) {
         var results = '';
         for (var i = 0; (i < this.imagePaths.length) && (i < this.projectJSON.captions.length); i++) {
             results = `     ${results}
-            <p class="galleroid-text ${i == 0 ? 'active' : 'hidden-right'}">${this.projectJSON.captions[i].caption}</p>`;
+            <p class="galleroid-caption ${i == 0 ? 'active' : 'hidden-right'}">${this.projectJSON.captions[i].caption}</p>`;
         }
         return results;
     }
@@ -151,7 +151,7 @@ function Project(projectPath) {
         <button class="galleroid-previous-button">&lt</button>
         <p class="galleroid-title">${this.projectJSON.projectDisplayTitle}</p>
         <button class="galleroid-next-button">&gt</button>
-        <div class="galleroid-text-container">${this.captionsHTML()}
+        <div class="galleroid-caption-container">${this.captionsHTML()}
         </div>
     </div>
 </div>
