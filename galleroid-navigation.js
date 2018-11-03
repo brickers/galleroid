@@ -1,68 +1,29 @@
 $(document).ready(function($) {
 
-    $('#galleroid').load('galleroid.html', function() {
+    $('#galleroid').load('galleroid/galleroid.html', function() {
 
-        var items = $('.galleroid-item'),
-            pics = $('.galleroid-picture-container'),
-            titles = $('.galleroid-title'),
-            texts = $('.galleroid-caption-container'),
-            prevs = $('.galleroid-previous-button'),
-            nexts = $('.galleroid-next-button'),
-            enterDuration = 250,
-            exitDuration = 200;
+        var items = $('.galleroid-item')
         
         $('#galleroid').find('.galleroid-picture-container').on('click', function (e) {
-
             // set variables
             var pic = $(this),
                 item = pic.parent(),
-                prev = item.children('.galleroid-previous-button'),
-                title = item.children('.galleroid-title'),
-                next = item.children('.galleroid-next-button'),
-                text = item.children('.galleroid-caption-container'),
-                isTextHidden = text.is(":hidden"),
-                isPrevHidden = prev.is(":hidden"),
-                isNextHidden = next.is(":hidden"),
-                otherItems = items.not(item),
-                otherPics = pics.not(pic),
-                otherTitles = titles.not(title),
-                otherTexts = texts.not(text),
-                otherPrevs = prevs.not(prev),
-                otherNexts = nexts.not(next);
+                otherItems = items.not(item)
 
-            // prevent standard link behaviour
+            // prevent standard link behaviour  
             e.preventDefault();
 
             // activate current gallery item and its constituents
-            if (!(item.hasClass('active'))) {
-                setMargins(item);
-                item.addClass('active');
-            } else {
+            if (item.hasClass('active')) {
                 item.removeAttr('style');
                 item.removeClass('active');
+            } else {
+                setMargins(item);
+                item.addClass('active');
             }
-
-            pic.toggleClass('active');
-            title.toggleClass('active');
-            isTextHidden ? text.stop(true, true).addClass('active').css('display', 'none').fadeIn(enterDuration) : 
-                           text.stop(true, true).removeClass('active');
-            isPrevHidden ? prev.stop(true, true).addClass('active').css('display', 'none').fadeIn(enterDuration) :
-                           prev.stop(true, true).fadeOut({  duration: exitDuration,
-                                                            complete: function(){prev.removeClass('active')}});
-            isNextHidden ? next.stop(true, true).addClass('active').css('display', 'none').fadeIn(enterDuration) :
-                           next.stop(true, true).fadeOut({  duration: exitDuration,
-                                                            complete: function(){next.removeClass('active')}});
 
             // deactivate all other gallery items
             otherItems.removeClass('active').removeAttr('style');
-            otherPics.removeClass('active');
-            otherTitles.removeClass('active');
-            otherTexts.stop(true, true).slideUp({duration: exitDuration, 
-                                                 complete: function(){$('this').removeClass('active')}});
-            otherPrevs.stop(true, true).fadeOut({duration: exitDuration,
-                                                 complete: function(){$('this').removeClass('active')}});
-            otherNexts.stop(true, true).fadeOut({duration: exitDuration,
-                                                 complete: function(){$('this').removeClass('active')}});
         });
 
         $('.galleroid-previous-button').on('click', function (e) {
@@ -83,7 +44,7 @@ $(document).ready(function($) {
 
 function setMargins(element) {
     var targetMargin;
-          
+
     // make galleroid responsive by reducing margin size on big screens
     if ($(window).width() >= 750) {
         targetMargin = $(window).width() / 100;
@@ -100,16 +61,16 @@ function setMargins(element) {
 
 function navigateDetail(goForwards, item) {
     var activeIndex = 3,
-        detailPicItems = item.find('.galleroid-picture'),
+        detailFGPicItems = item.find('.galleroid-fg-picture'),
         detailBGPicItems = item.find('.galleroid-bg-picture'),
         detailTextItems = item.find('.galleroid-caption'),
-        detailPicItemsCount = detailPicItems.length;
+        detailFGPicItemsCount = detailFGPicItems.length;
 
     // find index of currently-active detail item
-    for (i = 0; i < detailPicItemsCount; i++) {
-        if (detailPicItems.eq(i).hasClass('active')) {
+    for (i = 0; i < detailFGPicItemsCount; i++) {
+        if (detailFGPicItems.eq(i).hasClass('active')) {
             activeIndex = i;
-            i = detailPicItemsCount;
+            i = detailFGPicItemsCount;
         }
     }
     
@@ -119,7 +80,7 @@ function navigateDetail(goForwards, item) {
 
     if (goForwards == true) {
         // increment
-        if (activeIndex + 1 < detailPicItemsCount) {
+        if (activeIndex + 1 < detailFGPicItemsCount) {
             direction = 1;
             classToAdd = 'hidden-left';
             classToRemove = 'hidden-right';
@@ -134,8 +95,8 @@ function navigateDetail(goForwards, item) {
     }
 
     if (direction != 0) {
-        detailPicItems.eq(activeIndex).removeClass('active').addClass(classToAdd);
-        detailPicItems.eq(activeIndex + direction).removeClass(classToRemove).addClass('active');
+        detailFGPicItems.eq(activeIndex).removeClass('active').addClass(classToAdd);
+        detailFGPicItems.eq(activeIndex + direction).removeClass(classToRemove).addClass('active');
         detailBGPicItems.eq(activeIndex).removeClass('active').addClass(classToAdd);
         detailBGPicItems.eq(activeIndex + direction).removeClass(classToRemove).addClass('active');
         detailTextItems.eq(activeIndex).removeClass('active').addClass(classToAdd);

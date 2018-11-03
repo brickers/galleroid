@@ -81,7 +81,7 @@ function Project(projectPath) {
             this.projectJSONPath = itemPath;
             continue
         }
-        var ext = path.extname(itemName);
+        var ext = path.extname(itemName.toLowerCase());
         var itemIsImage = false;
         if (ext == '.jpg' || ext == '.jpeg' || ext == '.png' || ext == '.bmp' || ext == '.gif') {
             itemIsImage = true;
@@ -89,6 +89,7 @@ function Project(projectPath) {
         var itemStats = fs.statSync(itemPath);
         if (itemStats.isFile() && itemIsImage) {
             console.log("Found image " + itemName);
+            itemPath = "galleroid" + itemPath.slice(1);
             this.imagePaths.push(itemPath);
         } 
     }
