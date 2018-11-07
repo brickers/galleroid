@@ -12,61 +12,109 @@
     box-sizing: border-box;
 }
 
+@mixin MainFlexLayout ($num-columns) {
+    $border-width: 5vw / $num-columns;
+    $center-row-height: 15vw / $num-columns;
+    $item-wrapper-width: 100% / $num-columns;
+    $item-wrapper-height: 90vw / $num-columns;
+    $pic-width-height: 50vw / $num-columns;
+
+    .galleroid-item-wrapper {
+        width: $item-wrapper-width;
+        height: $item-wrapper-height;
+    }
+
+    .galleroid-item {
+        border-width: $border-width $border-width 0;
+        grid-template-rows: auto
+                            $center-row-height 
+                            auto; 
+        
+        &.active {
+            width: 96% * $num-columns;
+        }
+    }
+
+    .galleroid-picture-container,
+    .galleroid-fg-picture,
+    .galleroid-bg-picture {
+        width: $pic-width-height;
+        height: $pic-width-height;
+    }
+
+    .galleroid-title {
+        max-width: 50vw / $num-columns;
+    }
+}
+
+@mixin ActiveLayout($button-size, $border-size, $caption-height) {
+    $grid-section-button-size: (2 * $border-size) + $button-size;
+
+    .galleroid-item.active {
+        grid-template-columns:  $button-size    auto    $button-size;
+        grid-template-rows:     1fr
+                                $grid-section-button-size
+                                $caption-height;
+
+        .galleroid-previous-button,
+        .galleroid-next-button {
+            height: $button-size;
+            width: $button-size;
+            margin: $border-size 0;
+        }
+    }
+
+    .galleroid-caption-container {
+        height: $caption-height;
+    }
+    
+    .galleroid-caption.active {
+        max-height: $caption-height;
+    }
+}
+
+@include MainFlexLayout(1);
+@include ActiveLayout(10vw, 2vw, 54px);
+
 .galleroid-item-wrapper {
-    height: 90vw;
-    width: 60%;
     overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
 .galleroid-item {
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 20vw;
-    margin-bottom: 20vw;
-    border-width: 5vw 5vw 0;
     background-color: white;
     border-style: solid;
     border-color: white;
     border-radius: 2px;
     display: grid;
     grid-gap: 0px;
-    grid-template-columns:  0       auto    0;
-    grid-template-rows:     auto
-                            15vw 
-                            auto;  
+    grid-template-columns:  0       auto    0; 
     grid-template-areas: '  pic     pic     pic' 
                          '  prev    title   next' 
                          '  text    text    text';
-
     position: static;
     animation: deactivate 0.2s;
     padding: 0;
     z-index: 1;
+    opacity: 0.99;
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
 
-    &:hover {
-        box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.4);
-    }
-
     &.active {
-        width: 160%;
+        height: calc(100vh - 4vw);
         border-width: 2vw;
         border-radius: 4px;
-        grid-template-columns:  10%    auto    10%;
-        grid-template-rows:     auto
-                                auto
-                                auto;
         z-index: 10;
         box-shadow: 0 1vw 4vw 0 rgba(0, 0, 0, 0.5);
-        position: relative;
+        position: absolute;
         animation: activate 0.25s;
 
         .galleroid-picture-container {
-            height: calc(100vh - 22vw - 126px);
+            height: 100%;
             border-radius: 4px;
-            margin: 0 auto;
-            transition: none;
+            width: 100%;
         }
 
         .galleroid-bg-picture, {
@@ -82,20 +130,18 @@
 
         .galleroid-fg-picture,
         .galleroid-bg-picture {
-            height: calc(100vh - 22vw - 126px);
+            height: 100%;
+            width: 100%;
         }
 
         .galleroid-title {
             transform: scale(1.5);
-            max-width: 46vw;
+            max-width: 43vw;
         }
 
         .galleroid-previous-button,
         .galleroid-next-button {
             display: block;
-            width: 10vw;
-            height: 10vw;
-            margin: 2vw 0;
         }
 
         .galleroid-caption-container {
@@ -105,11 +151,9 @@
 }
 
 .galleroid-picture-container {
-    width: 100%;
-    height: 50vw;
     background-color: grey;
     border-radius: 2px;
-    margin: 0 auto;
+    margin: 0;
     cursor: pointer;
     grid-area: pic;
     z-index: inherit;
@@ -124,7 +168,6 @@
     overflow: hidden;
     white-space: normal;
     position: absolute;
-    max-height: 126px;
 }
 
 .galleroid-fg-picture,
@@ -188,9 +231,9 @@
     overflow: hidden;
     background-color: transparent;
     text-align: center;
-    margin: auto;
+    margin: 13px auto;
     grid-area: title;
-    max-width: 50vw;
+    align-self: center;
 }
 
 .galleroid-previous-button,
@@ -219,125 +262,22 @@
 .galleroid-caption-container {
     display: none;
     width: 100%;
-    height: 126px;
     grid-area: text;
     position: relative;
     overflow: hidden;
 }
 
 /* Tablet */
-
 @media only screen and (min-width: 500px) {
-    .galleroid-item-wrapper {
-        height: 45vw;
-        width: 40%;
-    }
-
-    .galleroid-item {
-        width: 30vw;
-        margin-left: 5vw;
-        margin-right: 5vw;
-        margin-top: 10vw;
-        margin-bottom: 10vw;
-        border-width: 2.5vw 2.5vw 0;
-        grid-template-rows: auto
-                            7.5vw
-                            auto;
-    }
-
-    .galleroid-item.active {
-        width: 240%;
-        grid-template-columns:  5%    auto    5%;
-
-        .galleroid-picture-container,
-        .galleroid-fg-picture,
-        .galleroid-bg-picture {
-            height: calc(100vh - 17vw - 54px);
-        }
-
-        .galleroid-previous-button,
-        .galleroid-next-button {
-            height: 5vw;
-            width: 5vw;
-            margin: 2vw 0;
-        }
-    }
-
-    .galleroid-picture-container,
-    .galleroid-fg-picture,
-    .galleroid-bg-picture {
-        height: 25vw;
-    }
-
-    .galleroid-title {
-        max-width: 25vw;
-    }
-
-    .galleroid-previous-button,
-    .galleroid-next-button {
-        height: 5vw;
-        width: 5vw;
-    }
-
-    .galleroid-caption-container {
-        height: 54px;
-    }
-    
-    .galleroid-caption.active {
-        max-height: 54px;
-    }
+    @include MainFlexLayout(2);
+    @include ActiveLayout(5vw, 2vw, 54px);
 }
 
 /* Desktop */
 
 @media only screen and (min-width: 750px) {
-    .galleroid-item-wrapper {
-        height: 22.5vw;
-        width: 22%;
-    }
-
-    .galleroid-item {
-        width: 15vw;
-        margin-top: 5vw;
-        margin-left: 3.5vw;
-        margin-right: 3.5vw;
-        border-width: 1.25vw 1.25vw 0;
-        grid-template-rows: auto
-                            3.75vw
-                            auto;
-    }
-
-    .galleroid-item.active {
-        border-width: 1vw;
-        width: 445.45%;
-
-        .galleroid-picture-container,
-        .galleroid-fg-picture,
-        .galleroid-bg-picture {
-            height: calc(100vh - 11vw - 54px);
-        }
-
-        .galleroid-previous-button,
-        .galleroid-next-button {
-            margin: 1vw 0;
-        }
-    }
-
-    .galleroid-picture-container,
-    .galleroid-fg-picture,
-    .galleroid-bg-picture {
-        height: 12.5vw;
-    }
-
-    .galleroid-title {
-        max-width: 12.5vw;
-    }
-
-    .galleroid-previous-button,
-    .galleroid-next-button {
-        height: 2.5vw;
-        width: 2.5vw;
-    }
+    @include MainFlexLayout(3);
+    @include ActiveLayout(5vw, 1vw, 54px);
 }
 
 /* Animations */
@@ -355,13 +295,16 @@
 @keyframes deactivate {
     0% {
         position: relative;
+        transform: scale(1.1);
     }
     
     99% {
         position: relative;
+        transform: scale(1);
     }
     
     100% {
         position: static;
+        transform: scale(1);
     }
 }

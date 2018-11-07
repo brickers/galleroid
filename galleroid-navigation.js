@@ -43,28 +43,24 @@ $(document).ready(function($) {
 });
 
 function setMargins(element) {
-    var targetMargin;
+    if (element.length < 1) { return };
 
-    // make galleroid responsive by reducing margin size on big screens
-    if ($(window).width() >= 750) {
-        targetMargin = $(window).width() / 100;
-    } else {
-        targetMargin = $(window).width() / 50;
-    }
-
-    var offset = element.parent()[0].getBoundingClientRect(),
-        activeMarginTop = targetMargin - offset.top,
-        activeMarginLeft = targetMargin - offset.left;
-
+    var offset = element.parent()[0].getBoundingClientRect();
+    var currentCentreX = (offset.width / 2) + offset.left;
+    var currentCentreY = (offset.height / 2) + offset.top;
+    var windowCentreX = $(window).width() / 2;
+    var windowCentreY = $(window).height() / 2;
+    var activeMarginTop = windowCentreY - currentCentreY;
+    var activeMarginLeft = windowCentreX - currentCentreX;
     element.css({'margin-top': activeMarginTop,'margin-left': activeMarginLeft, 'margin-bottom': '0', 'margin-right': '0'});
 }
 
 function navigateDetail(goForwards, item) {
-    var activeIndex = 3,
-        detailFGPicItems = item.find('.galleroid-fg-picture'),
-        detailBGPicItems = item.find('.galleroid-bg-picture'),
-        detailTextItems = item.find('.galleroid-caption'),
-        detailFGPicItemsCount = detailFGPicItems.length;
+    var activeIndex = 3;
+    var detailFGPicItems = item.find('.galleroid-fg-picture');
+    var detailBGPicItems = item.find('.galleroid-bg-picture');
+    var detailTextItems = item.find('.galleroid-caption');
+    var detailFGPicItemsCount = detailFGPicItems.length;
 
     // find index of currently-active detail item
     for (i = 0; i < detailFGPicItemsCount; i++) {

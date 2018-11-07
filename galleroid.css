@@ -12,18 +12,57 @@
 }
 
 .galleroid-item-wrapper {
+  width: 100%;
   height: 90vw;
-  width: 60%;
-  overflow: visible;
 }
 
 .galleroid-item {
-  width: 100%;
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 20vw;
-  margin-bottom: 20vw;
   border-width: 5vw 5vw 0;
+  grid-template-rows: auto 15vw auto;
+}
+.galleroid-item.active {
+  width: 96%;
+}
+
+.galleroid-picture-container,
+.galleroid-fg-picture,
+.galleroid-bg-picture {
+  width: 50vw;
+  height: 50vw;
+}
+
+.galleroid-title {
+  max-width: 50vw;
+}
+
+.galleroid-item.active {
+  grid-template-columns: 10vw auto 10vw;
+  grid-template-rows: 1fr 14vw 54px;
+}
+.galleroid-item.active .galleroid-previous-button,
+.galleroid-item.active .galleroid-next-button {
+  height: 10vw;
+  width: 10vw;
+  margin: 2vw 0;
+}
+
+.galleroid-caption-container {
+  height: 54px;
+}
+
+.galleroid-caption.active {
+  max-height: 54px;
+}
+
+.galleroid-item-wrapper {
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.galleroid-item {
   background-color: white;
   border-style: solid;
   border-color: white;
@@ -31,33 +70,27 @@
   display: grid;
   grid-gap: 0px;
   grid-template-columns: 0 auto 0;
-  grid-template-rows: auto 15vw auto;
   grid-template-areas: "  pic     pic     pic" "  prev    title   next" "  text    text    text";
   position: static;
   animation: deactivate 0.2s;
   padding: 0;
   z-index: 1;
+  opacity: 0.99;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
 }
-.galleroid-item:hover {
-  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.4);
-}
 .galleroid-item.active {
-  width: 160%;
+  height: calc(100vh - 4vw);
   border-width: 2vw;
   border-radius: 4px;
-  grid-template-columns: 10% auto 10%;
-  grid-template-rows: auto auto auto;
   z-index: 10;
   box-shadow: 0 1vw 4vw 0 rgba(0, 0, 0, 0.5);
-  position: relative;
+  position: absolute;
   animation: activate 0.25s;
 }
 .galleroid-item.active .galleroid-picture-container {
-  height: calc(100vh - 22vw - 126px);
+  height: 100%;
   border-radius: 4px;
-  margin: 0 auto;
-  transition: none;
+  width: 100%;
 }
 .galleroid-item.active .galleroid-bg-picture {
   transition: opacity 0.25s ease-out;
@@ -70,29 +103,25 @@
 }
 .galleroid-item.active .galleroid-fg-picture,
 .galleroid-item.active .galleroid-bg-picture {
-  height: calc(100vh - 22vw - 126px);
+  height: 100%;
+  width: 100%;
 }
 .galleroid-item.active .galleroid-title {
   transform: scale(1.5);
-  max-width: 46vw;
+  max-width: 43vw;
 }
 .galleroid-item.active .galleroid-previous-button,
 .galleroid-item.active .galleroid-next-button {
   display: block;
-  width: 10vw;
-  height: 10vw;
-  margin: 2vw 0;
 }
 .galleroid-item.active .galleroid-caption-container {
   display: block;
 }
 
 .galleroid-picture-container {
-  width: 100%;
-  height: 50vw;
   background-color: grey;
   border-radius: 2px;
-  margin: 0 auto;
+  margin: 0;
   cursor: pointer;
   grid-area: pic;
   z-index: inherit;
@@ -107,7 +136,6 @@
   overflow: hidden;
   white-space: normal;
   position: absolute;
-  max-height: 126px;
 }
 
 .galleroid-fg-picture,
@@ -171,9 +199,9 @@
   overflow: hidden;
   background-color: transparent;
   text-align: center;
-  margin: auto;
+  margin: 13px auto;
   grid-area: title;
-  max-width: 50vw;
+  align-self: center;
 }
 
 .galleroid-previous-button,
@@ -202,7 +230,6 @@
 .galleroid-caption-container {
   display: none;
   width: 100%;
-  height: 126px;
   grid-area: text;
   position: relative;
   overflow: hidden;
@@ -211,39 +238,22 @@
 /* Tablet */
 @media only screen and (min-width: 500px) {
   .galleroid-item-wrapper {
+    width: 50%;
     height: 45vw;
-    width: 40%;
   }
 
   .galleroid-item {
-    width: 30vw;
-    margin-left: 5vw;
-    margin-right: 5vw;
-    margin-top: 10vw;
-    margin-bottom: 10vw;
     border-width: 2.5vw 2.5vw 0;
     grid-template-rows: auto 7.5vw auto;
   }
-
   .galleroid-item.active {
-    width: 240%;
-    grid-template-columns: 5% auto 5%;
-  }
-  .galleroid-item.active .galleroid-picture-container,
-.galleroid-item.active .galleroid-fg-picture,
-.galleroid-item.active .galleroid-bg-picture {
-    height: calc(100vh - 17vw - 54px);
-  }
-  .galleroid-item.active .galleroid-previous-button,
-.galleroid-item.active .galleroid-next-button {
-    height: 5vw;
-    width: 5vw;
-    margin: 2vw 0;
+    width: 192%;
   }
 
   .galleroid-picture-container,
 .galleroid-fg-picture,
 .galleroid-bg-picture {
+    width: 25vw;
     height: 25vw;
   }
 
@@ -251,10 +261,15 @@
     max-width: 25vw;
   }
 
-  .galleroid-previous-button,
-.galleroid-next-button {
+  .galleroid-item.active {
+    grid-template-columns: 5vw auto 5vw;
+    grid-template-rows: 1fr 9vw 54px;
+  }
+  .galleroid-item.active .galleroid-previous-button,
+.galleroid-item.active .galleroid-next-button {
     height: 5vw;
     width: 5vw;
+    margin: 2vw 0;
   }
 
   .galleroid-caption-container {
@@ -268,47 +283,46 @@
 /* Desktop */
 @media only screen and (min-width: 750px) {
   .galleroid-item-wrapper {
-    height: 22.5vw;
-    width: 22%;
+    width: 33.3333333333%;
+    height: 30vw;
   }
 
   .galleroid-item {
-    width: 15vw;
-    margin-top: 5vw;
-    margin-left: 3.5vw;
-    margin-right: 3.5vw;
-    border-width: 1.25vw 1.25vw 0;
-    grid-template-rows: auto 3.75vw auto;
+    border-width: 1.6666666667vw 1.6666666667vw 0;
+    grid-template-rows: auto 5vw auto;
   }
-
   .galleroid-item.active {
-    border-width: 1vw;
-    width: 445.45%;
-  }
-  .galleroid-item.active .galleroid-picture-container,
-.galleroid-item.active .galleroid-fg-picture,
-.galleroid-item.active .galleroid-bg-picture {
-    height: calc(100vh - 11vw - 54px);
-  }
-  .galleroid-item.active .galleroid-previous-button,
-.galleroid-item.active .galleroid-next-button {
-    margin: 1vw 0;
+    width: 288%;
   }
 
   .galleroid-picture-container,
 .galleroid-fg-picture,
 .galleroid-bg-picture {
-    height: 12.5vw;
+    width: 16.6666666667vw;
+    height: 16.6666666667vw;
   }
 
   .galleroid-title {
-    max-width: 12.5vw;
+    max-width: 16.6666666667vw;
   }
 
-  .galleroid-previous-button,
-.galleroid-next-button {
-    height: 2.5vw;
-    width: 2.5vw;
+  .galleroid-item.active {
+    grid-template-columns: 5vw auto 5vw;
+    grid-template-rows: 1fr 7vw 54px;
+  }
+  .galleroid-item.active .galleroid-previous-button,
+.galleroid-item.active .galleroid-next-button {
+    height: 5vw;
+    width: 5vw;
+    margin: 1vw 0;
+  }
+
+  .galleroid-caption-container {
+    height: 54px;
+  }
+
+  .galleroid-caption.active {
+    max-height: 54px;
   }
 }
 /* Animations */
@@ -323,12 +337,15 @@
 @keyframes deactivate {
   0% {
     position: relative;
+    transform: scale(1.1);
   }
   99% {
     position: relative;
+    transform: scale(1);
   }
   100% {
     position: static;
+    transform: scale(1);
   }
 }
 
