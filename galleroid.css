@@ -1,10 +1,11 @@
 /* Mobile */
 #galleroid {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   flex-flow: row wrap;
   width: 100%;
-  margin: 0 auto 0;
+  padding: 48px 0;
+  margin: 0;
 }
 
 #galleroid * {
@@ -74,13 +75,13 @@
   position: static;
   animation: deactivate 0.2s;
   padding: 0;
-  z-index: 1;
+  z-index: 0;
   opacity: 0.99;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
 }
 .galleroid-item.active {
   height: calc(100vh - 4vw);
-  border-width: 2vw;
+  border-width: 2vmin;
   border-radius: 4px;
   z-index: 10;
   box-shadow: 0 1vw 4vw 0 rgba(0, 0, 0, 0.5);
@@ -217,6 +218,18 @@
   margin: 0;
   cursor: pointer;
 }
+@media only screen and (min-width: 400px) {
+  .galleroid-previous-button,
+.galleroid-next-button {
+    font-size: 1.5em;
+  }
+}
+@media only screen and (min-width: 1100px) {
+  .galleroid-previous-button,
+.galleroid-next-button {
+    font-size: 2em;
+  }
+}
 
 .galleroid-previous-button {
   grid-area: prev;
@@ -236,7 +249,7 @@
 }
 
 /* Tablet */
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 600px) {
   .galleroid-item-wrapper {
     width: 50%;
     height: 45vw;
@@ -281,7 +294,7 @@
   }
 }
 /* Desktop */
-@media only screen and (min-width: 750px) {
+@media only screen and (min-width: 1000px) {
   .galleroid-item-wrapper {
     width: 33.3333333333%;
     height: 30vw;
@@ -314,6 +327,50 @@
 .galleroid-item.active .galleroid-next-button {
     height: 5vw;
     width: 5vw;
+    margin: 1vw 0;
+  }
+
+  .galleroid-caption-container {
+    height: 54px;
+  }
+
+  .galleroid-caption.active {
+    max-height: 54px;
+  }
+}
+@media only screen and (min-width: 1500px) {
+  .galleroid-item-wrapper {
+    width: 25%;
+    height: 22.5vw;
+  }
+
+  .galleroid-item {
+    border-width: 1.25vw 1.25vw 0;
+    grid-template-rows: auto 3.75vw auto;
+  }
+  .galleroid-item.active {
+    width: 384%;
+  }
+
+  .galleroid-picture-container,
+.galleroid-fg-picture,
+.galleroid-bg-picture {
+    width: 12.5vw;
+    height: 12.5vw;
+  }
+
+  .galleroid-title {
+    max-width: 12.5vw;
+  }
+
+  .galleroid-item.active {
+    grid-template-columns: 3vw auto 3vw;
+    grid-template-rows: 1fr 5vw 54px;
+  }
+  .galleroid-item.active .galleroid-previous-button,
+.galleroid-item.active .galleroid-next-button {
+    height: 3vw;
+    width: 3vw;
     margin: 1vw 0;
   }
 

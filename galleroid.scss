@@ -2,10 +2,11 @@
 
 #galleroid {
 	display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-flow: row wrap;
     width: 100%;
-    margin: 0 auto 0;
+    padding: 48px 0;
+    margin: 0;
 }
 
 #galleroid * {
@@ -98,13 +99,13 @@
     position: static;
     animation: deactivate 0.2s;
     padding: 0;
-    z-index: 1;
+    z-index: 0;
     opacity: 0.99;
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
 
     &.active {
         height: calc(100vh - 4vw);
-        border-width: 2vw;
+        border-width: 2vmin;
         border-radius: 4px;
         z-index: 10;
         box-shadow: 0 1vw 4vw 0 rgba(0, 0, 0, 0.5);
@@ -248,6 +249,14 @@
     padding: 0;
     margin: 0;
     cursor: pointer;
+
+    @media only screen and (min-width: 400px) {
+        font-size: 1.5em;
+    }
+
+    @media only screen and (min-width: 1100px) {
+        font-size: 2em;
+    }
 }
 
 .galleroid-previous-button {
@@ -268,16 +277,21 @@
 }
 
 /* Tablet */
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 600px) {
     @include MainFlexLayout(2);
     @include ActiveLayout(5vw, 2vw, 54px);
 }
 
 /* Desktop */
 
-@media only screen and (min-width: 750px) {
+@media only screen and (min-width: 1000px) {
     @include MainFlexLayout(3);
     @include ActiveLayout(5vw, 1vw, 54px);
+}
+
+@media only screen and (min-width: 1500px) {
+    @include MainFlexLayout(4);
+    @include ActiveLayout(3vw, 1vw, 54px);
 }
 
 /* Animations */
