@@ -149,9 +149,9 @@ function Project(projectPath) {
     <div class="galleroid-item">
         <div class="galleroid-picture-container">${this.foregroundImagesHTML()}${this.backgroundImagesHTML()}
         </div>
-        <button class="galleroid-previous-button">&lt</button>
+        <button class="galleroid-previous-button">&larr;</button>
         <p class="galleroid-title">${this.projectJSON.projectDisplayTitle}</p>
-        <button class="galleroid-next-button">&gt</button>
+        <button class="galleroid-next-button">&rarr;</button>
         <div class="galleroid-caption-container">${this.captionsHTML()}
         </div>
     </div>
