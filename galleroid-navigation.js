@@ -18,6 +18,7 @@ $(document).ready(function($) {
                 item.removeAttr('style');
                 item.removeClass('active');
             } else {
+                loadImages(pic);
                 setMargins(item);
                 item.addClass('active');
             }
@@ -41,6 +42,20 @@ $(document).ready(function($) {
         });
     });
 });
+
+function loadImages(container) {
+    var fgPics = $(container).find('.galleroid-fg-picture[src=""]');
+    var bgPics = $(container).find('.galleroid-bg-picture[src=""]');
+    swapDatasrcToSrc(fgPics);
+    swapDatasrcToSrc(bgPics);
+}
+
+function swapDatasrcToSrc(list) {
+    for (let picture of list) {
+        picture.src = picture.dataset.src;
+        picture.dataset.src = "";
+    }
+}
 
 function setMargins(element) {
     if (element.length < 1) { return };

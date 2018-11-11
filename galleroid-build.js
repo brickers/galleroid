@@ -120,8 +120,13 @@ function Project(projectPath) {
     this.foregroundImagesHTML = function() {
         var results = '';
         for (var i = 0; i < this.imagePaths.length; i++) {
-            results = `${results}
-            <img src="${this.imagePaths[i]}" class="galleroid-fg-picture ${i == 0 ? 'active' : 'hidden-right'}" width="100" height="100">`;
+            if (i == 0) {
+                results = `${results}
+                <img src="${this.imagePaths[i]}" class="galleroid-fg-picture ${i == 0 ? 'active' : 'hidden-right'}" width="100" height="100">`;
+            } else {
+                results = `${results}
+                <img src="" data-src="${this.imagePaths[i]}" class="galleroid-fg-picture ${i == 0 ? 'active' : 'hidden-right'}" width="100" height="100">`;
+            }
         }
         return results;
     }
@@ -129,8 +134,13 @@ function Project(projectPath) {
     this.backgroundImagesHTML = function() {
         var results = '';
         for (var i = 0; i < this.imagePaths.length; i++) {
-            results = `${results}
-            <img src="${this.imagePaths[i]}" class="galleroid-bg-picture ${i == 0 ? 'active' : 'hidden-right'}" width="100" height="100">`;
+            if (i == 0) {
+                results = `${results}
+                <img src="${this.imagePaths[i]}" class="galleroid-bg-picture ${i == 0 ? 'active' : 'hidden-right'}" width="100" height="100">`;
+            } else {
+                results = `${results}
+                <img src="" data-src="${this.imagePaths[i]}" class="galleroid-bg-picture ${i == 0 ? 'active' : 'hidden-right'}" width="100" height="100">`;
+            }
         }
         return results;
     }
