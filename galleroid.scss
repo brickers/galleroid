@@ -104,7 +104,6 @@
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
 
     &.active {
-        height: calc(100vh - 4vw);
         border-width: 2vmin;
         border-radius: 4px;
         z-index: 10;

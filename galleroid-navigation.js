@@ -63,11 +63,14 @@ function setMargins(element) {
     var offset = element.parent()[0].getBoundingClientRect();
     var currentCentreX = (offset.width / 2) + offset.left;
     var currentCentreY = (offset.height / 2) + offset.top;
-    var windowCentreX = $(window).width() / 2;
-    var windowCentreY = $(window).height() / 2;
+    var windowHeight = $(window).height();
+    var windowWidth = $(window).width();
+    var windowCentreX = windowWidth / 2;
+    var windowCentreY = windowHeight / 2;
+    var height = windowHeight - (windowWidth * 0.04);
     var activeMarginTop = windowCentreY - currentCentreY;
     var activeMarginLeft = windowCentreX - currentCentreX;
-    element.css({'margin-top': activeMarginTop,'margin-left': activeMarginLeft, 'margin-bottom': '0', 'margin-right': '0'});
+    element.css({'margin-top': activeMarginTop,'margin-left': activeMarginLeft, 'margin-bottom': '0', 'margin-right': '0', 'height': height});
 }
 
 function navigateDetail(goForwards, item) {
