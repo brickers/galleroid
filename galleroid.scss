@@ -104,6 +104,7 @@
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
 
     &.active {
+        //height: calc(100vh - 4vw);
         border-width: 2vmin;
         border-radius: 4px;
         z-index: 10;
@@ -115,6 +116,10 @@
             height: 100%;
             border-radius: 4px;
             width: 100%;
+
+            .galleroid-close {
+                display: block;
+            }
         }
 
         .galleroid-bg-picture, {
@@ -159,6 +164,23 @@
     z-index: inherit;
     overflow: hidden;
     position: relative;
+}
+
+.galleroid-close {
+    display: none;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 500;
+    pointer-events: none;
+    opacity: 0.5;
+
+    @media only screen and (min-width: 1024px) {
+        width: 45px;
+        height: 45px;
+    }
 }
 
 .galleroid-caption {
@@ -283,7 +305,7 @@
 
 /* Desktop */
 
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 1000px) and (orientation: landscape){
     @include MainFlexLayout(3);
     @include ActiveLayout(5vw, 1vw, 54px);
 }
